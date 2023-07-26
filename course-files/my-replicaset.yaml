@@ -1,28 +1,21 @@
 apiVersion: apps/v1
 kind: ReplicaSet
-# config replicaSet
 metadata:
   name: frontend-rs
   labels:
     app: frontend
-# config replicaSet
-
-# config do pod
 spec:
-  template:
-    metadata:
+  template: 
+    metadata: 
       name: my-pod-webserver
-      labels:
+      labels: 
         apps: my-app
         tier: frontend
-    # config dos containeres
     spec:
       containers:
-        - name: my-container-nginx
-          image: nginx
-    # config dos containeres
+      - name: my-container-nginx
+        image: nginx
   selector:
     matchLabels:
       apps: my-app
   replicas: 4
-  # config do pod

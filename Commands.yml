@@ -1,0 +1,34 @@
+# Comandos básicos: 
+
+kubectl:
+  get:
+    pods:
+      param: [
+        "--all-namespaces"
+      ]
+  create:
+    param: [
+      "-f file.yml"
+    ]
+  delete:
+    pods:
+      param: [
+        "replica-set-name-{xxxx}",
+        "--all pods"
+      ]
+    replicasets:
+      param: [
+        "replica-set-name"
+      ]
+  apply:
+    param: [
+      "-f file.yml"
+    ]
+  scale:
+    replicasets:
+      param: [
+       "replica-set-name --replicas=n" # n -> numero de replicas desejado para escalar
+      ]
+
+
+

@@ -1,0 +1,13 @@
+Install kubectl
+
+1. Open download folder
+$ cd Download
+
+2. Download kubectl
+$ curl -LO https://dl.k8s.io/release/v1.24.2/bin/linux/amd64/kubectl
+
+3. Install kubectl
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+4. Check installation
+$ kubectl version --client --output=yaml   
