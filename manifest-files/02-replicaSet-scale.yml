@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+# config replicaSet
+metadata:
+  name: frontend-rs
+  labels:
+    app: frontend
+# config replicaSet
+
+# config do pod
+spec:
+  template:
+    metadata:
+      name: my-pod-webserver
+      labels:
+        apps: my-app
+        tier: frontend
+    # config dos containeres
+    spec:
+      containers:
+        - name: my-container-nginx
+          image: nginx
+    # config dos containeres
+  selector:
+    matchLabels:
+      apps: my-app
+#  replicas: 2
+  replicas: 10
+  # config do pod
+
+
+# Alterando o valor do 'replicas' para cima ou para baixo e aplicando novamente o arquivo, ele escala para cima ou abaixo (mantendo as pods já criadas)
+
+#  Iniciando com 2 replicas
+#  NAME                READY   STATUS    RESTARTS   AGE
+#  frontend-rs-j6s82   1/1     Running   0          50s
+#  frontend-rs-tb8pj   1/1     Running   0          50s
+
+
+#  Aplicando já com 2 replicas e aumentando para 10 pods
+#  NAME                READY   STATUS              RESTARTS   AGE
+#  frontend-rs-46cwz   0/1     ContainerCreating   0          1s
+#  frontend-rs-c8s4b   0/1     ContainerCreating   0          1s
+#  frontend-rs-hn9jk   0/1     ContainerCreating   0          1s
+#  frontend-rs-j6s82   1/1     Running             0          59s
+#  frontend-rs-jgt22   0/1     ContainerCreating   0          1s
+#  frontend-rs-nn9l2   0/1     ContainerCreating   0          1s
+#  frontend-rs-p9zxl   0/1     Pending             0          1s
+#  frontend-rs-skkzh   0/1     Pending             0          1s
+#  frontend-rs-sqptm   0/1     ContainerCreating   0          1s
+#  frontend-rs-tb8pj   1/1     Running             0          59s
+
